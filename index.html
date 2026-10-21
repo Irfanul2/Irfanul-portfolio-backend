@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyber">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230f0f11'/><text x='32' y='43' font-size='30' text-anchor='middle' fill='%23ff4d5e' font-family='monospace' font-weight='bold'>IH</text></svg>">
+<meta name="theme-color" content="#0f0f11">
+<title>Irfanul Hoda | Backend Developer</title>
+<style>
+:root{--bg:#08100e;--surface:#0f1b17;--border:#1e3a31;--green:#34f5a0;--dim:#3fb67a;--muted:#2a8a5a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--bg)}
+body{background:var(--bg);color:var(--dim);font-size:1.05rem;font-family:"Courier New",ui-monospace,monospace;line-height:1.7}
+a{color:var(--green)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--border);display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;padding:1rem;z-index:5}
+nav a{text-decoration:none;color:#fff;border:1px solid var(--green);padding:.4rem 1.1rem;border-radius:6px;font-size:1rem}
+nav a:hover{background:var(--green);color:var(--bg)}
+section{max-width:900px;margin:0 auto;padding:5rem 1.5rem}
+h2{font-size:2rem;margin-bottom:1.5rem;color:#fff}
+.card h3,.group h3,.modal h3,.contact b{color:#fff}
+#home{position:relative;overflow:hidden}
+#home>*{position:relative;z-index:1}
+#bg{position:absolute!important;inset:0;z-index:0!important;overflow:hidden;word-break:break-all;font-size:15px;line-height:1.7;color:var(--green);opacity:.22;user-select:none}
+h2::before{content:"";width:6px;height:1.4rem;background:var(--green);border-radius:2px}
+#home{min-height:90vh;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 20% 30%,color-mix(in srgb,var(--green) 12%,transparent),transparent 55%)}
+#home h1{font-size:clamp(2.6rem,8vw,4.5rem);color:#fff;line-height:1.1}
+#home p{font-size:1.3rem;color:var(--green);margin-top:1rem;max-width:600px}
+.btn{display:inline-block;margin-top:2rem;padding:.7rem 1.4rem;border:1px solid var(--green);text-decoration:none;width:fit-content}
+.btn:hover{background:var(--green);color:var(--bg)}
+#about p{color:var(--dim);margin-bottom:1rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.group{background:var(--surface);border:1px solid var(--border);padding:1.2rem}
+.group h3{margin-bottom:.6rem;font-size:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tags span{border:1px solid var(--border);padding:.15rem .6rem;font-size:.9rem;color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+.card{background:var(--surface);border:1px solid var(--border);padding:1.3rem;cursor:pointer;text-align:left;font:inherit;color:inherit;transition:.2s}
+.card:hover{border-color:var(--green);box-shadow:0 0 14px rgba(61,255,133,.25);transform:translateY(-3px)}
+.card h3{margin-bottom:.5rem;font-size:1.2rem}
+.card p{color:var(--dim);font-size:.9rem}
+.card small{display:block;margin-top:.8rem;color:var(--muted)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:1rem;z-index:10}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--green);max-width:560px;width:100%;max-height:85vh;overflow:auto;padding:1.8rem;box-shadow:0 0 25px rgba(61,255,133,.3)}
+.modal h3{font-size:1.4rem;margin-bottom:.8rem}
+.modal p,.modal li{color:var(--dim);margin-bottom:.6rem}
+.modal ul{padding-left:1.2rem}
+.modal .tags{margin:1rem 0}
+.close{float:right;background:none;border:1px solid var(--border);color:var(--green);font:inherit;padding:.2rem .7rem;cursor:pointer}
+.close:hover{border-color:var(--green)}
+.contact li{list-style:none;margin-bottom:.8rem;color:var(--dim)}
+.contact b{color:var(--green);display:inline-block;min-width:90px}
+footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid var(--border);font-size:.85rem}
+
+/* aesthetic polish */
+.contact li{display:flex;align-items:center;gap:.9rem}
+.ic{width:22px;height:22px;fill:var(--green);flex:none}
+::selection{background:var(--green);color:var(--bg)}
+nav{backdrop-filter:blur(8px);background:color-mix(in srgb,var(--bg) 90%,transparent);box-shadow:0 4px 20px rgba(0,0,0,.4)}
+h2{display:flex;align-items:center;gap:.8rem}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.btn{border-radius:6px;color:var(--green);font-weight:bold}
+.group,.card{border-radius:10px;background:linear-gradient(145deg,var(--surface),color-mix(in srgb,var(--surface) 70%,var(--bg)))}
+.card{border-top:2px solid var(--green)}
+.group:hover{border-color:var(--muted)}
+.tags span{border-radius:20px;background:color-mix(in srgb,var(--green) 7%,transparent);border-color:var(--muted);color:var(--green)}
+.modal{border-radius:12px}
+.close{border-radius:6px}
+.contact li{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.2rem}
+.contact li:hover{border-color:var(--green)}
+a:hover{text-shadow:0 0 8px var(--green)}
+footer{background:var(--surface)}
+
+/* background polish */
+body{background:radial-gradient(circle at 85% 0%,color-mix(in srgb,var(--green) 8%,transparent),transparent 40%),radial-gradient(circle at 0% 60%,color-mix(in srgb,var(--green) 5%,transparent),transparent 45%),var(--bg);background-attachment:fixed}
+#bg{letter-spacing:.35em;opacity:.28;-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 15%,transparent 75%);mask-image:radial-gradient(ellipse at 70% 40%,#000 15%,transparent 75%)}
+#home::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,var(--bg));z-index:0}
+
+/* branding */
+nav{justify-content:flex-end;align-items:center}
+nav a.brand{border:none;margin-right:auto;font-size:1.25rem;font-weight:bold;padding:.4rem 0}
+nav a.brand:hover{background:none;color:#fff}
+.brand span{color:var(--green)}
+.hello{color:var(--green);font-size:1.1rem;margin-bottom:.4rem}
+.role{color:#fff;letter-spacing:.25em;text-transform:uppercase;font-size:.85rem;margin-top:.9rem;opacity:.85}
+
+/* home polish */
+.role{display:flex;flex-wrap:wrap;gap:.6rem;letter-spacing:.08em;text-transform:none;font-size:.95rem;opacity:1;margin-top:1.1rem}
+.role span{border:1px solid var(--muted);border-radius:20px;padding:.2rem .9rem;background:color-mix(in srgb,var(--green) 8%,transparent);color:#fff}
+.role span:first-child{background:var(--green);color:var(--bg);border-color:var(--green);font-weight:bold}
+#home h1::after{content:"";display:block;width:90px;height:4px;margin-top:.8rem;background:var(--green);border-radius:2px;box-shadow:0 0 14px var(--green)}
+.btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btns .btn{margin-top:0}
+.btn.ghost{border-color:var(--muted);color:#fff}
+.btn.ghost:hover{background:#fff;color:var(--bg);border-color:#fff}
+
+/* backend / terminal vibe */
+:root{--cyan:#5ee7d6}
+.group h3::before{content:"$ ";color:var(--green)}
+.group{border-left:3px solid var(--green)}
+.group:nth-child(even){border-left-color:var(--cyan)}
+.group:nth-child(even) .tags span{color:var(--cyan);border-color:color-mix(in srgb,var(--cyan) 45%,transparent);background:color-mix(in srgb,var(--cyan) 7%,transparent)}
+.card:nth-child(even){border-top-color:var(--cyan)}
+.card:nth-child(even):hover{border-color:var(--cyan);box-shadow:0 0 14px color-mix(in srgb,var(--cyan) 25%,transparent)}
+.role span:nth-child(even){border-color:color-mix(in srgb,var(--cyan) 50%,transparent)}
+nav a.brand span{color:var(--cyan)}
+footer b span{color:var(--cyan)!important}
+
+/* api terminal */
+.term{background:color-mix(in srgb,var(--bg) 60%,#000);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.bar{display:flex;align-items:center;gap:.4rem;padding:.6rem 1rem;border-bottom:1px solid var(--border);background:var(--surface)}
+.bar i{width:11px;height:11px;border-radius:50%;background:#ff5f56}
+.bar i:nth-child(2){background:#ffbd2e}
+.bar i:nth-child(3){background:#27c93f}
+.bar span{margin-left:.8rem;color:var(--muted);font-size:.85rem}
+.eps{display:flex;flex-wrap:wrap;gap:.6rem;padding:1rem}
+.eps button{font:inherit;font-size:.9rem;background:none;border:1px solid var(--border);color:var(--dim);padding:.3rem .8rem;border-radius:6px;cursor:pointer}
+.eps button.on,.eps button:hover{border-color:var(--green);color:var(--green)}
+#out{padding:0 1.2rem 1.2rem;white-space:pre-wrap;word-break:break-word;color:#fff;font-size:.95rem;line-height:1.6;min-height:230px}
+#out .k{color:var(--cyan)}#out .s{color:var(--green)}#out .c{color:var(--muted)}
+.note{font-size:.8rem;color:var(--muted);margin-top:.8rem}
+
+/* amber accent */
+:root{--amber:#ffb454}
+.hello{color:var(--amber)}
+.card small{color:var(--amber)}
+.role span:nth-child(3){border-color:color-mix(in srgb,var(--amber) 60%,transparent)}
+.btn.ghost{border-color:var(--amber)}
+.contact li:hover{border-color:var(--amber)}
+.eps button.on{border-color:var(--amber);color:var(--amber)}
+
+/* themes */
+.themes{display:flex;gap:.5rem;margin-left:.5rem}
+.themes button{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;opacity:.7}
+.themes button.on,.themes button:hover{border-color:#fff;opacity:1}
+
+/* skills redesign */
+.skills{grid-template-columns:repeat(auto-fit,minmax(290px,1fr));counter-reset:g}
+.group{counter-increment:g;position:relative;overflow:hidden;padding:1.4rem}
+.group::after{content:"";position:absolute;right:-35px;top:-35px;width:110px;height:110px;border-radius:50%;background:radial-gradient(color-mix(in srgb,var(--green) 22%,transparent),transparent 70%);pointer-events:none}
+.group h3{margin-bottom:1rem;font-size:1.05rem}
+.group h3::after{content:"0" counter(g);float:right;color:var(--muted);font-size:.85rem;position:relative;z-index:1}
+.skills .tags{gap:.6rem}
+.skills .tags span{display:inline-flex;align-items:center;gap:.45rem;border-radius:8px;padding:.4rem .8rem;transition:.2s}
+.skills .tags span:hover{transform:translateY(-2px);box-shadow:0 0 12px color-mix(in srgb,var(--green) 30%,transparent)}
+.tags i{font-style:normal;font-size:1.05rem}
+html[data-theme=cyber]{--bg:#0f0f11;--surface:#18181b;--border:#2b2b30;--green:#ff4d5e;--dim:#b8b8bf;--muted:#7a7a83;--cyan:#e8dcc4;--amber:#ffffff}
+html[data-theme=gold]{--bg:#0b0a08;--surface:#16140f;--border:#3a3220;--green:#f5c542;--dim:#cdbf9a;--muted:#8f8157;--cyan:#ffe9a8;--amber:#ff7a45}
+
+/* project cards redesign */
+.cards{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.ctop{display:flex;align-items:center;gap:.4rem;padding:.55rem .9rem;background:color-mix(in srgb,var(--bg) 60%,var(--surface));border-bottom:1px solid var(--border)}
+.ctop i{width:9px;height:9px;border-radius:50%;background:#ff5f56}
+.ctop i:nth-child(2){background:#ffbd2e}
+.ctop i:nth-child(3){background:#27c93f}
+.ctop span{margin-left:.6rem;font-size:.8rem;color:var(--muted)}
+.cbody{padding:1.3rem;position:relative;flex:1}
+.num{position:absolute;right:1rem;top:.4rem;font-size:2.8rem;font-weight:bold;color:color-mix(in srgb,var(--green) 16%,transparent)}
+.ctags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.ctags span{font-size:.75rem;border:1px solid var(--border);border-radius:20px;padding:.1rem .6rem;color:var(--cyan)}
+.card:hover .num{color:color-mix(in srgb,var(--green) 35%,transparent)}
+
+/* fonts + background refresh */
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/28px 28px,radial-gradient(circle at 85% 0%,color-mix(in srgb,var(--green) 8%,transparent),transparent 40%),var(--bg);background-attachment:fixed}
+h1,h2{letter-spacing:-.02em;font-weight:700}
+.term,.ctop,.ctags,.role,.num,.hello,nav a.brand,.group h3,.eps button,#out,.contact b,footer{font-family:'JetBrains Mono',ui-monospace,Consolas,monospace}
+#bg{opacity:.16;font-family:'JetBrains Mono',ui-monospace,monospace}
+
+/* contact redesign */
+.cintro{margin-bottom:1.5rem;color:var(--dim)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.ccard{--c:var(--green);display:flex;align-items:center;gap:1rem;padding:1.1rem 1.2rem 1.1rem 1.4rem;background:linear-gradient(145deg,var(--surface),color-mix(in srgb,var(--surface) 60%,var(--bg)));border:1px solid var(--border);border-radius:14px;text-decoration:none;position:relative;overflow:hidden;transition:.2s}
+.ccard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+.ccard.gh{--c:#fff}.ccard.li{--c:var(--cyan)}.ccard.em{--c:var(--amber)}
+.cic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)}
+.ccard .ic{width:22px;height:22px;fill:currentColor}
+.ccard b{display:block;color:#fff}
+.ccard em{font-style:normal;color:var(--dim);font-size:.85rem;word-break:break-all}
+.go{margin-left:auto;color:var(--muted);font-size:1.2rem}
+.ccard:hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 8px 24px color-mix(in srgb,var(--c) 22%,transparent);text-shadow:none}
+.ccard:hover .go{color:var(--c)}
+
+/* final polish */
+#pbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;background:linear-gradient(90deg,var(--green),var(--cyan))}
+html{scrollbar-width:thin;scrollbar-color:var(--muted) var(--bg)}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--muted);border-radius:8px}
+/* full-width layout */
+section{max-width:1400px}
+#home{max-width:none;padding-left:max(1.5rem,calc((100vw - 1400px)/2 + 1.5rem));padding-right:max(1.5rem,calc((100vw - 1400px)/2 + 1.5rem))}
+/* pill nav */
+html{scroll-padding-top:90px}
+nav{justify-content:center;align-items:center;flex-wrap:nowrap;gap:.6rem;padding:.8rem 1rem;background:color-mix(in srgb,var(--bg) 60%,transparent);backdrop-filter:blur(8px);border-bottom:none;box-shadow:none}
+.pn-logo{width:44px;height:44px;border-radius:50%;background:var(--green);color:var(--bg)!important;display:grid;place-items:center;font:700 1rem 'JetBrains Mono',monospace;text-decoration:none;border:none;padding:0;flex:none;transition:background .3s}
+.pn-logo:hover{background:#fff;color:var(--bg)}
+.pn-pill{display:flex;align-items:center;gap:4px;padding:4px;height:44px;background:var(--surface);border:1px solid var(--border);border-radius:999px}
+.pn-pill a{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:100%;padding:0 1.1rem;border:none;border-radius:999px;background:none;color:#fff;font-size:.95rem;font-weight:600;white-space:nowrap;text-decoration:none;text-shadow:none;transition:color .3s}
+.pn-pill a::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:999px;background:var(--green);transform:translateY(105%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.pn-pill a:hover{background:none;color:var(--bg);text-shadow:none}
+.pn-pill a:hover::before{transform:translateY(0)}
+.pn-pill a.active::after{content:"";position:absolute;left:50%;bottom:3px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--green)}
+.pn-pill a.active:hover::after{background:var(--bg)}
+.themes{margin-left:0;height:44px;align-items:center;padding:0 .9rem;background:var(--surface);border:1px solid var(--border);border-radius:999px;flex:none}
+@media (max-width:900px){nav{flex-wrap:wrap}.pn-pill{order:3;width:100%;overflow-x:auto;scrollbar-width:none}.pn-pill::-webkit-scrollbar{display:none}.pn-pill a{padding:0 .9rem;flex:none}}
+/* stepper */
+.stp-ind{display:flex;align-items:flex-start}
+.stp-dot{display:flex;flex-direction:column;align-items:center;gap:.45rem;width:76px;flex:none;background:none;border:none;color:var(--muted);font:inherit;cursor:pointer}
+.stp-n{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--border);background:var(--surface);color:var(--dim);font-weight:700;transition:.3s}
+.stp-dot.active .stp-n{background:var(--green);border-color:var(--green);color:var(--bg);box-shadow:0 0 14px color-mix(in srgb,var(--green) 45%,transparent)}
+.stp-dot.done .stp-n{background:color-mix(in srgb,var(--green) 22%,transparent);border-color:var(--green);color:var(--green)}
+.stp-l{font-size:.78rem}
+.stp-dot.active .stp-l{color:#fff}
+.stp-ln{flex:1;height:2px;margin-top:18px;min-width:10px;background:var(--border);position:relative;overflow:hidden}
+.stp-ln i{position:absolute;inset:0;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.stp-ln.on i{transform:scaleX(1)}
+.stp-body{margin:1.6rem 0 1.2rem;padding:1.6rem;min-height:190px;border:1px solid var(--border);border-radius:14px;background:linear-gradient(145deg,var(--surface),color-mix(in srgb,var(--surface) 60%,var(--bg)))}
+.stp-body h3{color:#fff;font-size:1.3rem;margin-bottom:.6rem}
+.stp-body p{color:var(--dim);margin-bottom:1rem}
+.stp-body.anim{animation:stpIn .3s ease}
+@keyframes stpIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.stp-nav{display:flex;justify-content:space-between}
+.stp-b{font:inherit;font-weight:700;padding:.6rem 1.5rem;border-radius:999px;border:1px solid var(--green);background:var(--green);color:var(--bg);cursor:pointer;transition:.2s}
+.stp-b.alt{background:none;color:#fff;border-color:var(--muted)}
+.stp-b:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 18px color-mix(in srgb,var(--green) 30%,transparent)}
+.stp-b:disabled{opacity:.35;cursor:default}
+@media (max-width:560px){.stp-l{display:none}.stp-dot{width:auto}}
+@media (prefers-reduced-motion:reduce){.stp-body.anim{animation:none}}
+/* project icons */
+.pic{width:48px;height:48px;display:grid;place-items:center;font-size:1.5rem;border-radius:12px;margin-bottom:.9rem;background:color-mix(in srgb,var(--green) 14%,transparent);border:1px solid color-mix(in srgb,var(--green) 35%,transparent)}
+.card:nth-child(even) .pic{background:color-mix(in srgb,var(--cyan) 14%,transparent);border-color:color-mix(in srgb,var(--cyan) 40%,transparent)}
+/* education rows */
+.stp-rows{display:grid;gap:.9rem;margin-bottom:1rem}
+.stp-row{padding-left:.9rem;border-left:3px solid var(--green)}
+.stp-row:nth-child(even){border-left-color:var(--cyan)}
+.stp-row b{display:block;color:#fff}
+.stp-row span{color:var(--dim);font-size:.92rem}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+
+<nav>
+  <a class="pn-logo" href="#home" aria-label="Home">IH</a>
+  <div class="pn-pill"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#api">API</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+  <div class="themes"><button data-t="matrix" style="background:#34f5a0" title="Matrix"></button><button data-t="cyber" style="background:#ff4d5e" title="Crimson"></button><button data-t="gold" style="background:#f5c542" title="Gold"></button></div>
+</nav>
+
+<section id="home">
+  <div id="bg"></div>
+  <div class="hello">Hello, I’m</div>
+  <h1>Irfanul Hoda</h1>
+  <div class="role"><span>Backend Developer</span><span>Java</span><span>Python</span><span>Spring Boot</span><span>Gen-AI</span></div>
+  <p>Backend developer who builds reliable Java and Spring Boot systems and loves shipping real production work.</p>
+  <div class="btns"><a class="btn" href="#projects">View my projects</a><a class="btn ghost" href="#contact">Contact me</a><a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">View resume</a></div>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>Hi, I’m a Computer Science Engineering graduate passionate about backend development and Artificial Intelligence.</p>
+  <p>I focus on Java, Spring Boot, REST APIs, SQL, and database management. Alongside backend development, I’m exploring Generative AI, Large Language Models (LLMs), and Retrieval-Augmented Generation (RAG). I have also worked with Docker and Ollama, and have a basic understanding of vector databases and their role in AI-powered applications.</p>
+  <p>I enjoy learning new technologies, building practical projects, and exploring ways to integrate AI into backend systems. My goal is to become a skilled backend engineer with AI expertise and build scalable, reliable, and intelligent applications that solve real-world problems.</p>
+</section>
+
+<section id="journey">
+  <h2>My Journey</h2>
+  <div class="stp-ind" id="stpInd"></div>
+  <div class="stp-body" id="stpBody"></div>
+  <div class="stp-nav"><button class="stp-b alt" id="stpBack">Back</button><button class="stp-b" id="stpNext">Next</button></div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="group"><h3>Backend</h3><div class="tags"><span><i>☕</i>Java</span><span><i>🍃</i>Spring Boot</span><span><i>🗃️</i>Hibernate</span><span><i>🔌</i>REST APIs</span><span><i>🟢</i>Node.js</span></div></div>
+    <div class="group"><h3>Database</h3><div class="tags"><span><i>🐘</i>PostgreSQL</span><span><i>🧭</i>pgvector</span></div></div>
+    <div class="group"><h3>Gen-AI</h3><div class="tags"><span><i>✨</i>Gen-AI</span><span><i>📚</i>RAG</span><span><i>🧠</i>LLMs</span><span><i>🤖</i>Claude API</span><span><i>🦙</i>Ollama</span></div></div>
+    <div class="group"><h3>DevOps</h3><div class="tags"><span><i>🐳</i>Docker</span><span><i>🌿</i>Git</span><span><i>🐙</i>GitHub</span><span><i>📮</i>Postman</span></div></div>
+    <div class="group"><h3>Frontend</h3><div class="tags"><span><i>🌐</i>HTML</span><span><i>🎨</i>CSS</span><span><i>⚛️</i>React</span></div></div>
+    <div class="group"><h3>Other</h3><div class="tags"><span><i>⚙️</i>C++</span><span><i>🧩</i>DSA</span><span><i>📈</i>Machine Learning</span><span><i>🕸️</i>Deep Learning</span></div></div>
+  </div>
+</section>
+
+<section id="api">
+  <h2>Try My API</h2>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>irfanul@portfolio:~$ curl</span></div>
+    <div class="eps"><button data-ep="/api/profile">GET /api/profile</button><button data-ep="/api/skills">GET /api/skills</button><button data-ep="/api/projects">GET /api/projects</button><button data-ep="/api/contact">GET /api/contact</button></div>
+    <pre id="out"></pre>
+  </div>
+  <p class="note">Responses are simulated in your browser; no real server is called.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="cards">
+    <button class="card" data-id="p1"><div class="ctop"><i></i><i></i><i></i><span>PersonaRag.java</span></div><div class="cbody"><div class="num">01</div><div class="pic">🤖</div><h3>Persona RAG Chatbot</h3><p>A chatbot that replies in my own texting style using retrieval-augmented generation.</p><div class="ctags"><span>Java</span><span>pgvector</span><span>Ollama</span></div><small>$ open details →</small></div></button>
+    <button class="card" data-id="p2"><div class="ctop"><i></i><i></i><i></i><span>TaskManager.java</span></div><div class="cbody"><div class="num">02</div><div class="pic">📋</div><h3>Team Task Manager</h3><p>Full-stack app for creating, assigning and tracking team tasks.</p><div class="ctags"><span>Java</span><span>Spring Boot</span><span>REST</span></div><small>$ open details →</small></div></button>
+    <button class="card" data-id="p3"><div class="ctop"><i></i><i></i><i></i><span>index.html</span></div><div class="cbody"><div class="num">03</div><div class="pic">🛒</div><h3>E-commerce Website</h3><p>Online store for selling products, with a Java backend planned.</p><div class="ctags"><span>HTML</span><span>CSS</span><span>Java</span></div><small>$ open details →</small></div></button>
+    <button class="card" data-id="p4"><div class="ctop"><i></i><i></i><i></i><span>ChatApp.java</span></div><div class="cbody"><div class="num">04</div><div class="pic">💬</div><h3>Real-Time Chat Application</h3><p>Real-time messaging app with multi-room and private chat, built with Spring Boot, WebSocket and PostgreSQL.</p><div class="ctags"><span>Spring Boot</span><span>WebSocket</span><span>PostgreSQL</span></div><small>$ open details →</small></div></button>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="cintro">Open to backend roles. Reach out through any of these.</p>
+  <div class="cgrid">
+    <a class="ccard gh" href="https://github.com/Irfanul2" target="_blank" rel="noopener"><span class="cic"><svg class="ic" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.700 18.300 5 18.300 5c.7 1.600.2 2.800.1 3.200.8.800 1.200 1.900 1.200 3.200 0 4.600-2.800 5.600-5.500 5.900.4.400.8 1.100.8 2.200v3.300c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></span><span><b>GitHub</b><em>github.com/Irfanul2</em></span><span class="go">↗</span></a>
+    <a class="ccard li" href="https://www.linkedin.com/in/irfanul-hoda-206698249/" target="_blank" rel="noopener"><span class="cic"><svg class="ic" viewBox="0 0 24 24"><path d="M20.400 20.500h-3.600v-5.600c0-1.300 0-3-1.900-3s-2.100 1.400-2.100 2.900v5.700H9.300V9h3.400v1.600c.5-.9 1.600-1.900 3.400-1.900 3.600 0 4.300 2.400 4.300 5.500v6.300zM5.300 7.400a2.100 2.100 0 1 1 0-4.100 2.100 2.100 0 0 1 0 4.100zm1.800 13.100H3.600V9h3.500v11.500zM22.200 0H1.800C.8 0 0 .8 0 1.700v20.600c0 .9.8 1.700 1.800 1.700h20.400c1 0 1.800-.8 1.800-1.700V1.700C24 .8 23.200 0 22.200 0z"/></svg></span><span><b>LinkedIn</b><em>linkedin.com/in/irfanul-hoda-206698249</em></span><span class="go">↗</span></a>
+    <a class="ccard em" href="mailto:irfanulhoda2@gmail.com"><span class="cic"><svg class="ic" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg></span><span><b>Email</b><em>irfanulhoda2@gmail.com</em></span><span class="go">↗</span></a>
+    <a class="ccard rs" href="resume.pdf" target="_blank" rel="noopener"><span class="cic"><svg class="ic" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><span><b>Resume</b><em>View or download PDF</em></span><span class="go">↗</span></a>
+  </div>
+</section>
+
+<footer><b style="color:#fff">IH<span style="color:var(--green)">.</span></b> Irfanul Hoda · Built with HTML &amp; CSS</footer>
+
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="close" id="close">Close</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+document.getElementById("bg").textContent=Array.from({length:2500},()=>Math.random()<.5?0:1).join(" ");
+
+const api={
+ "/api/profile":{name:"Irfanul Hoda",role:"Backend Developer",education:"B.E., Computer Science and Engineering (Chandigarh University)",location:"Kharar, Punjab, India",patent:"Provisional filed: latency-predictive load balancing",open_to_work:true},
+ "/api/skills":{backend:["Java","Python","Spring Boot","Hibernate","REST APIs","Node.js"],database:["PostgreSQL","pgvector"],genai:["RAG","LLMs","Claude API","Ollama"],devops:["Docker","Git","Postman"]},
+ "/api/projects":[{id:1,name:"Persona RAG Chatbot"},{id:2,name:"Team Task Manager"},{id:3,name:"E-commerce Website"},{id:4,name:"Real-Time Chat Application"}],
+ "/api/contact":{github:"github.com/Irfanul2",status:"Open to backend roles"}
+};
+const out=document.getElementById("out"),eps=document.querySelectorAll(".eps button");
+function run(ep){
+  const ms=Math.floor(Math.random()*15)+8;
+  const json=JSON.stringify(api[ep],null,2).replace(/("(?:[^"\\]|\\.)*")(\s*:)?/g,(m,t,c)=>c?'<span class="k">'+t+'</span>'+c:'<span class="s">'+t+'</span>');
+  out.innerHTML='<span class="c">HTTP/1.1</span> <span class="s">200 OK</span> <span class="c">· '+ms+'ms</span>\n'+json;
+  eps.forEach(b=>b.classList.toggle("on",b.dataset.ep===ep));
+}
+eps.forEach(b=>b.addEventListener("click",()=>run(b.dataset.ep)));
+run("/api/profile");
+
+const tb=document.querySelectorAll(".themes button");
+function setTheme(t){document.documentElement.dataset.theme=t;tb.forEach(b=>b.classList.toggle("on",b.dataset.t===t));try{localStorage.setItem("theme",t)}catch(e){}}
+tb.forEach(b=>b.addEventListener("click",()=>setTheme(b.dataset.t)));
+let saved="cyber";try{saved=localStorage.getItem("theme")||"cyber"}catch(e){}
+if(!["matrix","cyber","gold"].includes(saved))saved="cyber";
+setTheme(saved);
+
+const pbar=document.getElementById("pbar");
+addEventListener("scroll",()=>{const h=document.documentElement;pbar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";},{passive:true});
+const pl=[...document.querySelectorAll(".pn-pill a")],ps=pl.map(a=>document.querySelector(a.getAttribute("href")));
+function spy(){let i=0;ps.forEach((x,k)=>{if(x.getBoundingClientRect().top<=140)i=k;});pl.forEach((a,k)=>a.classList.toggle("active",k===i));}
+addEventListener("scroll",spy,{passive:true});spy();
+
+const steps=[
+ {l:"Education",t:"Education",d:"My academic background.",g:[],rows:[["Chandigarh University","Mohali, Punjab · B.E. in Computer Science and Engineering"],["Good Samaritan School","Jasola, Sarita Vihar, New Delhi · Senior Secondary (Class XII)"],["Holy Mission School","Laheriasarai, Darbhanga, Bihar · Matriculation (Class X)"]]},
+ {l:"Backend",t:"Backend foundations",d:"Core focus on Java and Spring Boot, with Hibernate, REST APIs, PostgreSQL and Docker for packaging services.",g:["Java","Spring Boot","Hibernate","REST APIs","PostgreSQL","Docker"]},
+ {l:"Projects",t:"Building projects",d:"Built a Team Task Manager and a Real-Time Chat Application using WebSocket/STOMP and PostgreSQL to practise production-style backend work.",g:["Task Manager","Real-Time Chat","WebSocket","STOMP"]},
+ {l:"Gen-AI",t:"Exploring Gen-AI",d:"Built a Persona RAG chatbot that retrieves context with pgvector and answers using Ollama and the Claude API.",g:["RAG","LLMs","pgvector","Ollama","Claude API"]},
+ {l:"Next",t:"What’s next",d:"Filed a provisional patent for a context-aware, latency-predictive load balancing system. Now looking for a backend role to ship real production work.",g:["Patent filed","Open to backend roles"]}
+];
+let cur=0;const ind=document.getElementById("stpInd"),sb=document.getElementById("stpBody"),sBack=document.getElementById("stpBack"),sNext=document.getElementById("stpNext");
+steps.forEach((st,i)=>{
+  const b=document.createElement("button");b.className="stp-dot";b.type="button";
+  b.innerHTML='<span class="stp-n"></span><span class="stp-l"></span>';b.querySelector(".stp-l").textContent=st.l;
+  b.addEventListener("click",()=>go(i));ind.appendChild(b);
+  if(i<steps.length-1){const l=document.createElement("span");l.className="stp-ln";l.innerHTML="<i></i>";ind.appendChild(l);}
+});
+function go(i){
+  cur=i;
+  ind.querySelectorAll(".stp-dot").forEach((d,k)=>{d.classList.toggle("active",k===i);d.classList.toggle("done",k<i);d.querySelector(".stp-n").textContent=k<i?"✓":k+1;});
+  ind.querySelectorAll(".stp-ln").forEach((l,k)=>l.classList.toggle("on",k<i));
+  const st=steps[i];sb.textContent="";
+  const h=document.createElement("h3");h.textContent=st.t;
+  const p=document.createElement("p");p.textContent=st.d;
+  sb.append(h,p);
+  if(st.rows){const rs=document.createElement("div");rs.className="stp-rows";
+    st.rows.forEach(r=>{const d=document.createElement("div");d.className="stp-row";const b=document.createElement("b");b.textContent=r[0];const sp=document.createElement("span");sp.textContent=r[1];d.append(b,sp);rs.appendChild(d);});
+    sb.appendChild(rs);}
+  if(st.g.length){const tg=document.createElement("div");tg.className="tags";
+    st.g.forEach(x=>{const sp=document.createElement("span");sp.textContent=x;tg.appendChild(sp);});
+    sb.appendChild(tg);}
+  sb.classList.remove("anim");void sb.offsetWidth;sb.classList.add("anim");
+  sBack.disabled=i===0;sNext.textContent=i===steps.length-1?"Contact me":"Next";
+}
+sBack.addEventListener("click",()=>go(cur-1));
+sNext.addEventListener("click",()=>{if(cur===steps.length-1)location.hash="#contact";else go(cur+1);});
+go(0);
+
+const projects = {
+  p1: {ic:"🤖",title:"Persona RAG Chatbot",
+    desc:"A personal chatbot that answers messages in my own texting style. It retrieves similar past conversations and uses them as context for the language model.",
+    points:["Embeddings stored and searched with pgvector in PostgreSQL","Local models via Ollama, plus the Claude API","Telegram bot interface","Built in Java"],
+    stack:["Java","pgvector","Ollama","Claude API","Telegram"],
+    link:"https://github.com/Irfanul2/personal-rag-chatbot"},
+  p2: {ic:"📋",title:"Team Task Manager",
+    desc:"A full-stack application for managing team work: create tasks, assign them and follow progress.",
+    points:["Add your key features here","Add what you built on the backend","Add what you built on the frontend"],
+    stack:["Java","Spring Boot","REST APIs"],
+    link:"https://github.com/Irfanul2/task-manager-backend"},
+  p3: {ic:"🛒",title:"E-commerce Website",
+    desc:"An online store for selling products. The HTML/CSS frontend comes first, with a Java backend to be connected later.",
+    points:["Product listing and responsive layout","Planned Java backend integration"],
+    stack:["HTML","CSS","Java"],
+    link:"https://github.com/Irfanul2"},
+  p4: {ic:"💬",title:"Real-Time Chat Application",
+    desc:"A real-time messaging application built with Spring Boot, WebSocket/STOMP, and PostgreSQL for instant communication between users.",
+    points:["Implemented multi-room messaging and message broadcasting","Built private messaging for one-to-one communication","Integrated PostgreSQL for persistent message storage","Implemented paginated message history retrieval"],
+    stack:["Java","Spring Boot","WebSocket","STOMP","PostgreSQL"],
+    link:"https://github.com/Irfanul2/realtime-chat-app"}
+};
+const overlay = document.getElementById("overlay"), body = document.getElementById("modal-body");
+document.querySelectorAll(".card").forEach(c => c.addEventListener("click", () => {
+  const p = projects[c.dataset.id];
+  body.innerHTML = `<h3>${p.ic} ${p.title}</h3><p>${p.desc}</p><ul>${p.points.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <div class="tags">${p.stack.map(s=>`<span>${s}</span>`).join("")}</div>
+    ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">View on GitHub →</a>` : ""}`;
+  overlay.classList.add("open");
+}));
+const closeModal = () => overlay.classList.remove("open");
+document.getElementById("close").addEventListener("click", closeModal);
+overlay.addEventListener("click", e => { if (e.target === overlay) closeModal(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+</script>
+</body>
+</html>
